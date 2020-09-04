@@ -1,11 +1,11 @@
 package com.oop.constant;
 
-public enum Gender {
+public enum GenderEnum {
 
-    MALE("男性"), FEMALE("女性");
+    MALE("男"), FEMALE("女");
 
     String gender;
-    Gender(String s) {
+    GenderEnum(String s) {
         this.gender = s;
     }
 

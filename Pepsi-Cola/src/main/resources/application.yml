@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.232.1.206:3306/train
+    username: liaogangwei
+    password: Lgw@123456
+
+jpa:
+  hibernate:
+    ddl-auto: update

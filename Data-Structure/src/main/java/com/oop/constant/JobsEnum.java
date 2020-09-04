@@ -1,5 +1,5 @@
 package com.oop.constant;
 
-public enum Jobs {
+public enum JobsEnum {
     STAFF, MANAGER, DEVELOPER, PM
 }

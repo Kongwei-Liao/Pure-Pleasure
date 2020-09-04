@@ -1,21 +1,29 @@
 package com.kongwei;
 
-import java.util.ArrayList;
-import java.util.List;
+/**
+ * 队列（FIFO）
+ * @param <E>
+ */
+public class MyQueue2<E> {
+    
+    MyLinkedList<E> list = new MyLinkedList<>();
+    int index = 0;  // 下标
 
-public class MyQueue2<T> {
-    List<T> list = new ArrayList<T>();
-    int index = 0;  //下标
-
-    //入队
-    public void in(T n){
+    /**
+     * 进入队列
+     * @param n
+     */
+    public void in(E n) {
         list.add(n);
         index++;
     }
 
-    //出队
-    public T out(){
-        if(!list.isEmpty()){
+    /**
+     * 移出队列
+     * @return
+     */
+    public E out() {
+        if (!list.isEmpty()) {
             index--;
             return list.remove(0);
         }

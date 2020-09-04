@@ -1,6 +1,6 @@
 package com.oop;
 
-import com.oop.constant.Degree;
+import com.oop.constant.DegreeEnum;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ public class Candidate extends Person {
     private String introduction;
     private String specialty;
     private String forWhichJob;
-    private Degree degree;
+    private DegreeEnum degree;
     private Date date;
 
     public String getIntroduction() {
@@ -36,11 +36,11 @@ public class Candidate extends Person {
         this.forWhichJob = forWhichJob;
     }
 
-    public Degree getDegree() {
+    public DegreeEnum getDegree() {
         return degree;
     }
 
-    public void setDegree(Degree degree) {
+    public void setDegree(DegreeEnum degree) {
         this.degree = degree;
     }
 

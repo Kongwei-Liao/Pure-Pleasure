@@ -2,18 +2,29 @@ package com.kongwei;
 
 import java.util.Stack;
 
-public class MyQueue3<T> {
-    Stack<T> stackA = new Stack<T>();
-    Stack<T> stackB = new Stack<T>();
+/**
+ * 队列特性（FIFO）：使用两个栈来实现队列
+ * @param <E>
+ */
+public class MyQueue3<E> {
 
-    //入队
-    public void in(T n) {
+    Stack<E> stackA = new Stack<E>();
+    Stack<E> stackB = new Stack<E>();
+
+    /**
+     * 入队
+     * @param n
+     */
+    public void in(E n) {
         stackA.push(n);
     }
 
-    //出队
-    public T out() {
-        if(stackB.isEmpty()){
+    /**
+     * 出队
+     * @return
+     */
+    public E out() {
+        if (stackB.isEmpty()) {
             while (stackA.size() > 0) {
                 stackB.push(stackA.pop());
             }

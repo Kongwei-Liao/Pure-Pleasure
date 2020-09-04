@@ -1,21 +1,28 @@
 package com.kongwei;
 
-import java.util.ArrayList;
-import java.util.List;
+/**
+ * 栈结构（FILO）
+ * @param <E>
+ */
+public class MyStack2<E> {
 
-public class MyStack2<T> {
+    MyLinkedList<E> list = new MyLinkedList<>();
+    int index = 0; // 下标
 
-    List<T> list = new ArrayList<T>();
-    int index = 0; //下标
-
-    //入栈
-    public void push(T n){
+    /**
+     * 压栈
+     * @param n
+     */
+    public void push(E n) {
         list.add(n);
         index++;
     }
 
-    //出栈
-    public T pop(){
+    /**
+     * 出栈
+     * @return
+     */
+    public E pop() {
         return list.remove(--index);
     }
 }

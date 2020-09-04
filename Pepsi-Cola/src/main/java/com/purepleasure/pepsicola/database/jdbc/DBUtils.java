@@ -34,6 +34,15 @@ public class DBUtils {
         return conn;
     }
 
+    public PreparedStatement getPreparedStatement(@org.jetbrains.annotations.NotNull Connection connection, String sql) {
+        try {
+            return (PreparedStatement)connection.prepareStatement(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * 封装三个关闭方法
      *

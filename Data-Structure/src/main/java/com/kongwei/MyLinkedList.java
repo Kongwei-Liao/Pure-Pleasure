@@ -2,6 +2,11 @@ package com.kongwei;
 
 /**
  * 链表
+ * 目前：
+ * add方法向链尾添加元素
+ * add(index, element)
+ * remove(index)向删除指定 index 的元素
+ *
  * @param <E>
  */
 public class MyLinkedList<E> {
@@ -90,6 +95,10 @@ public class MyLinkedList<E> {
         current.item = null;
         size--;
         return element;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
 }
