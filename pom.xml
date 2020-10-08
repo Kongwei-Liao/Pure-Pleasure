@@ -17,6 +17,9 @@
     <modules>
         <module>Pepsi-Cola</module>
         <module>Data-Structure</module>
+        <module>Java-Agent</module>
+        <module>Standard-Edition</module>
+        <module>Java-8</module>
     </modules>
     <dependencies>
         <dependency>
