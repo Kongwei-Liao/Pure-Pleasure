@@ -20,6 +20,9 @@
         <property name="interceptorNames">
             <list>
                 <value>hijackBeforeMethodBean</value>
+                <value>hijackAfterReturningMethodBean</value>
+                <value>hijackThrowExceptionBean</value>
+                <value>hijackAroundMethodBean</value>
             </list>
         </property>
     </bean>
