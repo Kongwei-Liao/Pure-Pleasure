@@ -20,6 +20,8 @@
         <module>Java-Agent</module>
         <module>Standard-Edition</module>
         <module>Java-8</module>
+        <module>Concurrency-In-Practice</module>
+        <module>AOP</module>
     </modules>
     <dependencies>
         <dependency>
