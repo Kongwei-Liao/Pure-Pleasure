@@ -23,6 +23,7 @@
         <module>Concurrency-In-Practice</module>
         <module>AOP</module>
         <module>IO</module>
+        <module>IoC</module>
     </modules>
     <dependencies>
         <dependency>
