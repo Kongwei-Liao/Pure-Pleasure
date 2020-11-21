@@ -24,6 +24,7 @@
         <module>AOP</module>
         <module>IO</module>
         <module>IoC</module>
+        <module>Spring</module>
     </modules>
     <dependencies>
         <dependency>
