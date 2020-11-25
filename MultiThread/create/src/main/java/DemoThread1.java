@@ -1,6 +1,4 @@
-/**
- * 错误方法
- */
+
 public class DemoThread1 implements Runnable {
     @Override
     public void run() {

@@ -1,3 +1,6 @@
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -32,6 +35,7 @@ public class Main {
          */
 //        DemoThread1 demoThread1 = new DemoThread1();
 //        demoThread1.start();  // 失败：Runnable接口仅仅是一个函数式接口，方便使用lambda表达式，并没有start方法
+        new Thread(new DemoThread1()).start();
 
         new Thread() {
             @Override
@@ -52,5 +56,30 @@ public class Main {
         };
 
         new Thread(runnable).start();
+
+
+        /**
+         * 第三种：实现Callable接口
+         *
+         * 与 Runnable 相比，Callable 可以有返回值，返回值通过 FutureTask 进行封装。
+         */
+
+        DemoThread3 demoThread3 = new DemoThread3();
+        FutureTask<Integer> futureTask = new FutureTask<>(demoThread3);
+        Thread thread=new Thread(futureTask);
+        thread.start();
+        try {
+            System.out.println(futureTask.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        /**
+         * 注意事项：
+         * Thread.run()   仅仅是调用对象的方法，线程并没有运行
+         * Thread.start()  启动线程并执行该线程的run方法
+         */
     }
 }
