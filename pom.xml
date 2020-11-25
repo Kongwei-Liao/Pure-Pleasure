@@ -25,6 +25,9 @@
         <module>IO</module>
         <module>IoC</module>
         <module>Spring</module>
+        <module>ORM</module>
+        <module>notes</module>
+        <module>MultiThread</module>
     </modules>
     <dependencies>
         <dependency>
