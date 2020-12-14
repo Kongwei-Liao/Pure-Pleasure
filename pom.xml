@@ -28,6 +28,7 @@
         <module>ORM</module>
         <module>notes</module>
         <module>MultiThread</module>
+        <module>PPUtils</module>
     </modules>
     <dependencies>
         <dependency>
