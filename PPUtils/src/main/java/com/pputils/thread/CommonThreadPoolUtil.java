@@ -1,5 +1,7 @@
 package com.pputils.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,10 +15,12 @@ import java.util.concurrent.*;
  * @ClassName CommonThreadPoolUtil
  * @Time 2020/11/19 18:52
  * @Desc 1、通用线程池工具
- *       2、支持多线程返回结果
+ * 2、支持多线程返回结果
  **/
 @Service
 public class CommonThreadPoolUtil {
+
+    private Logger logger = LoggerFactory.getLogger(CommonThreadPoolUtil.class);
 
     /**
      * 核心线程数(默认初始化为8)
@@ -29,7 +33,7 @@ public class CommonThreadPoolUtil {
     private int maxCorePoolSize = 160;
 
     /**
-     * 队列等待线程数阈值（初始值16）
+     * 队列等待线程数阈值（初始值16），超过该阈值时会尝试创建新的线程执行任务，如果线程数大于maxCorePoolSize时尝试是失败的
      */
     private int blockingQueueWaitSize = 16;
 
@@ -37,6 +41,11 @@ public class CommonThreadPoolUtil {
      * 核心线程数自动调整的增量幅度（初始值4）
      */
     private int incrementCorePoolSize = 4;
+
+    /**
+     * 空闲下来的线程最大存活时间
+     */
+    private long keepAliveTime = 0L;
 
 //    /**
 //     * 线程工厂
@@ -64,7 +73,7 @@ public class CommonThreadPoolUtil {
     private ThreadPoolExecutor ThreadPool = new ThreadPoolExecutor(
             cacheCorePoolSize,
             cacheCorePoolSize,
-            0L,
+            keepAliveTime,
             TimeUnit.MILLISECONDS,
             new LinkedBlockingDeque<Runnable>()
     );
@@ -74,9 +83,9 @@ public class CommonThreadPoolUtil {
      * 1、运用场景：例如，需要同时校验很多不同的逻辑，依赖于获取校验结果响应给用户；
      * 2、具体实现java类：implements 的Callable接口，重写call方法即可，支持返回值
      *
-     * @author liaogangwei
      * @param callable
      * @return
+     * @author liaogangwei
      */
     public Map<String, Object> dealTask(Callable<?> callable) {
 
@@ -103,9 +112,9 @@ public class CommonThreadPoolUtil {
      * 1、运用场景：例如，不依赖于响应给用户执行结果的业务逻辑 ；
      * 2、具体实现java类：implements 的 Runnable接口，重写run方法，没有返回值
      *
-     * @author liaogangwei
      * @param runnable
      * @return Map<String, Object>
+     * @author liaogangwei
      */
     public Map<String, Object> dealTask(Runnable runnable) {
 
@@ -149,6 +158,7 @@ public class CommonThreadPoolUtil {
     /**
      * dynamicTuningPoolSize:(动态改变核心线程数). <br/>
      * 如果等待队列中的线程队列过长，尝试扩充线程池的大小
+     *
      * @author liaogangwei
      */
     private void dynamicTuningPoolSize() {
@@ -166,6 +176,7 @@ public class CommonThreadPoolUtil {
                 ThreadPool.setCorePoolSize(currentcorePoolSize);
                 ThreadPool.setMaximumPoolSize(currentcorePoolSize);
                 cacheCorePoolSize = currentcorePoolSize;
+                logger.info("已动态修改线程池容量：原核心线程池容量为：{}，现核心线程池容量为：{}", corePoolSize, currentcorePoolSize);
                 System.out.println("动态改变线程池大小：原核心线程池数目为：" + corePoolSize + ";现累加为：" + currentcorePoolSize);
             } else {
                 System.out.println("动态改变线程池大小：核心线程池数目已累加为：" + cacheCorePoolSize + "；不会继续无限增加");
@@ -175,10 +186,11 @@ public class CommonThreadPoolUtil {
 
     /**
      * 获取核心线程数 getCacheCorePoolSize:().
-     *
+     * <p>
      * 完成单元测试 testGetCacheCorePoolSize()
-     * @author liaogangwei
+     *
      * @return int
+     * @author liaogangwei
      */
     public int getCacheCorePoolSize() {
         return ThreadPool.getCorePoolSize();
@@ -186,10 +198,11 @@ public class CommonThreadPoolUtil {
 
     /**
      * 设置核心线程数 setCacheCorePoolSize:(). <br/>
-     *
+     * <p>
      * 完成单元测试 testSetCacheCorePoolSize()
-     * @author liaogangwei
+     *
      * @param cacheCorePoolSize
+     * @author liaogangwei
      */
     public void setCacheCorePoolSize(int cacheCorePoolSize) {
         ThreadPool.setCorePoolSize(cacheCorePoolSize);
@@ -200,9 +213,9 @@ public class CommonThreadPoolUtil {
     /**
      * successResp:(正确响应信息).
      *
-     * @author liaogangwei
      * @param data
      * @return
+     * @author liaogangwei
      */
     private Map<String, Object> successResp(Object data) {
         Map<String, Object> result = new HashMap<String, Object>(2);
@@ -214,10 +227,10 @@ public class CommonThreadPoolUtil {
     /**
      * errorResp:(错误响应信息).
      *
-     * @author liaogangwei
      * @param errorMsg
      * @param data
      * @return
+     * @author liaogangwei
      */
     public Map<String, Object> errorResp(String errorMsg, Object data) {
         Map<String, Object> result = new HashMap<String, Object>(3);
