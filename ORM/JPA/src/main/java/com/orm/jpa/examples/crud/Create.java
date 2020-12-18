@@ -17,17 +17,17 @@ public class Create {
          * 创建实体管理类工厂，借助Persistence的静态方法获取
          * 		其中传递的参数为持久化单元名称，需要jpa配置文件中指定
          */
-        // createEntityManagerFactory 这里创建的是Hibernate实现的EntityManagerFactory
+        // createEntityManagerFactory 这里创建的是由Hibernate实现的EntityManagerFactory
         // 线程安全的
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("WhatJPA");
 
         // 创建实体管理类
         // JPA规范中，EntityManager是完成持久化操作的核心对象
-        // createEntityManager这里创建的是Hibernate实现的EntityManager
+        // createEntityManager这里创建的是由Hibernate实现的EntityManager
         EntityManager em = factory.createEntityManager();
 
         // 获取事务对象
-        // getTransaction这里获取的是Hibernate的事务管理
+        // getTransaction这里获取的是由Hibernate的事务管理
         EntityTransaction tx = em.getTransaction();
 
         // 开启事务
