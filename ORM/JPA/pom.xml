@@ -10,7 +10,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.hibernate.version>5.0.7.Final</project.hibernate.version>
     </properties>
 
 
@@ -23,19 +22,19 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- hibernate对jpa的支持包 -->
+<!--        &lt;!&ndash; hibernate对jpa的支持包 &ndash;&gt;-->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${project.hibernate.version}</version>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.26.Final</version>
         </dependency>
 
-        <!-- c3p0 -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-c3p0</artifactId>
-            <version>${project.hibernate.version}</version>
-        </dependency>
+<!--        &lt;!&ndash; c3p0 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.hibernate</groupId>-->
+<!--            <artifactId>hibernate-c3p0</artifactId>-->
+<!--            <version>${project.hibernate.version}</version>-->
+<!--        </dependency>-->
 
         <!-- log日志 -->
         <dependency>
@@ -48,7 +47,13 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.6</version>
+            <version>8.0.19</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

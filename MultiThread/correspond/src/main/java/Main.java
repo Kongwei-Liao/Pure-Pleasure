@@ -11,19 +11,25 @@ public class Main {
         String b = "abcdefg";
 
         new Thread(() -> {
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             char[] chars = a.toCharArray();
             synchronized (o) {
                 for (char c : chars) {
                     System.out.print(c);
-
+                    // 唤醒一个处于等待的线程
                     o.notify();
-
                     try {
+                        // 使该线程等待，直到被另一个线程唤醒
                         o.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                // 唤醒一个处于等待的线程
                 o.notify();
             }
         }, "t1").start();
@@ -33,9 +39,12 @@ public class Main {
             synchronized (o) {
                 for (char c : chars) {
                     System.out.print(c);
-
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
                     o.notify();
-
                     try {
                         o.wait();
                     } catch (InterruptedException e) {
