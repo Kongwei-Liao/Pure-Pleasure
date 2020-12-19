@@ -29,6 +29,7 @@
         <module>notes</module>
         <module>MultiThread</module>
         <module>PPUtils</module>
+        <module>R2DBC</module>
     </modules>
     <dependencies>
         <dependency>

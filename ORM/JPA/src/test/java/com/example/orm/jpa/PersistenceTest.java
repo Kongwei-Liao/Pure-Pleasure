@@ -70,7 +70,6 @@ public class PersistenceTest {
         c.setCustLevel("VIP客户");
         c.setCustSource("网络");
         c.setCustIndustry("IT教育");
-        c.setCustAddress("昌平区北七家镇");
         c.setCustPhone("010-84389340");
         EntityManager em = null;
         EntityTransaction tx = null;

@@ -1,6 +1,5 @@
 package com.orm.jpa.examples.crud;
 
-import com.orm.jpa.entity.Customer;
 import com.orm.jpa.entity.EntityDemo;
 import com.orm.jpa.utils.JPAUtil;
 

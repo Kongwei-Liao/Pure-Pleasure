@@ -16,7 +16,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>JPA</module>
-        <module>Hibernate</module>
+        <module>Mybatis</module>
+        <module>HBnate</module>
+        <module>EClink</module>
     </modules>
 
 

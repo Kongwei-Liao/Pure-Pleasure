@@ -68,7 +68,7 @@ public class Create {
 
         // @OneToOne 实例
         Student st1 = new Student();
-        // st1.setS_id(1);   // 已配置主键生成策略，便不能set主键
+        // st1.setS_id(1);   // 针对已配Hibernate：置主键生成策略，便不能set主键    针对Eclipselink：需要set主键的值 Table 'train.sequence' doesn't exist
         st1.setS_name("Maxsu");
 
         Student st2 = new Student();
